@@ -1,0 +1,102 @@
+/* Login CSS */
+registration-form {
+  padding: 50px 0;
+}
+
+form {
+  background-color: #fff;
+  max-width: 600px;
+  margin: auto;
+  padding: 50px 70px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+}
+
+.form-icon {
+  text-align: center;
+  background-color: #5891ff;
+  border-radius: 50%;
+  font-size: 40px;
+  color: white;
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  margin-bottom: 50px;
+  line-height: 100px;
+}
+
+.item {
+  border-radius: 20px;
+  margin-bottom: 25px;
+  padding: 7px 20px;
+}
+
+.login {
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #5791ff;
+  border: none;
+  color: white;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.forgot {
+  margin: 0px 0px 0px 116px;
+}
+.remember {
+  margin: 0px 0px 0px 160px;
+}
+.reset {
+  margin: 0px 0px 0px 116px;
+}
+
+@media (max-width: 576px) {
+  .LOGIN .registration-form form {
+    padding: 50px 20px;
+  }
+
+  .LOGIN.registration-form .form-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 30px;
+    line-height: 70px;
+  }
+}
+
+.create-account {
+  border-radius: 15px;
+}
+
+.sidebar {
+  /* position: fixed; */
+  margin: 1px 1px 1xp 1px;
+}
+#more {
+  display: none;
+}
+
+/* Navbar */
+.navbar{
+  height: 60px;
+  /* width: 10px; */
+  background-color: #5891ff;
+  color: white;
+}
+
+/* home style */
+.card{
+  /* padding: 100px; */
+  margin-left: 100px;
+}
+.card-title{
+  color: #5891ff;
+};
+
+.h1, h1{
+  margin: 20px 471px;
+  text-align: center;
+}
