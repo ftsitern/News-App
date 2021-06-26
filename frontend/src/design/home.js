@@ -1,13 +1,45 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Nav from "./Nav";
 import Footer from "./Footer"
+import Article from "./Article";
 import "./style.css"
-export default function home() {
+export default function Home() {
+
+  const [query, setQuery] = useState("");
+  const [search, setSearch] = useState("");
+  const [news, setNews] = useState([]);
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      setQuery(search);
+      setSearch("");
+  }
+
+  useEffect(() => {
+    const getNews = async () => {
+      try {
+        if(query !== ""){
+          const response = await fetch(`https://newsapi.org/v2/top-headlines?q=${query}&apiKey=1c59fcd193184e74b48186679ecd6dad`)
+          const data = await response.json();
+          setNews(data.articles);
+          console.log(data.articles);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getNews();
+  }, [query]);
+
   return (
     <header>
         {/* Navbar starts */}
         <Nav />
       <h1 className="news" style = {{color : "#5891ff"}}>News Of The Day</h1>
+        <form style={{padding: 0, display: "flex"}} onSubmit={handleSubmit}>
+            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Topic" value={search} onChange={(e) => setSearch(e.target.value)}/>
+            <button type="submit" class="btn" style={{backgroundColor: "#5891FF"}}>Search</button>
+        </form>
       <div className="container">
 
         {/*  Sidebar starts here */}
@@ -33,72 +65,15 @@ export default function home() {
 
           {/* ends */}
           <div className="col-sm-10">
-            <div class="card mt-4">
-              <div class="row no-gutters">
-                <div class="col-md-4">
-                  <img src="..." alt="..." />
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </p>
-                    <p class="card-text">
-                      <small class="text-muted">Last updated 3 mins ago</small>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              </div>
-            <div class="card mt-4">
-
-              <div class="row no-gutters">
-                <div class="col-md-4">
-                  <img src="..." alt="..." />
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </p>
-                    <p class="card-text">
-                      <small class="text-muted">Last updated 3 mins ago</small>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              </div>
-            <div class="card mt-4">
-
-              <div class="row no-gutters">
-                <div class="col-md-4">
-                  <img src="..." alt="..." />
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                      This is a wider card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </p>
-                    <p class="card-text">
-                      <small class="text-muted">Last updated 3 mins ago</small>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {
+              news.map((val) => (
+                <Article val={val}/>
+              ))
+            }
           </div>
-        </div>
+          </div>
       </div>
-      <Footer></Footer>
+      <Footer />
     </header>
   );
 }
