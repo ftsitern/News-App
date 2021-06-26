@@ -12,8 +12,10 @@ export default function Nav() {
           aria-controls="navbarTogglerDemo01"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          style={{padding: 0}}
         >
           <span class="navbar-toggler-icon"></span>
+          FTS News
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
           <a
