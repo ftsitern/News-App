@@ -100,3 +100,16 @@ form {
   margin: 20px 471px;
   text-align: center;
 }
+
+.navbar{
+  justify-content: center;
+}
+
+.news{
+  text-align: center;
+  margin: 20px;
+}
+
+.image{
+  display: flex;
+}
